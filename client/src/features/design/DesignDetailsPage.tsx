@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { hexToHsl, hexToRgb } from "@/utils/colorFormat";
+import { DESIGN_IMAGE_URL } from "@/constant/constants";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import useGetDesign from "./hooks/useGetDesign";
@@ -43,7 +44,6 @@ export default function DesignDetailsPage() {
   }
 
   console.log(design);
-  const imageBaseUrl = "http://localhost:5000/public/img/designs";
 
   function copyColor(color: string | null) {
     if (!color) return;
@@ -65,7 +65,7 @@ export default function DesignDetailsPage() {
         <div className="relative group w-full aspect-video md:aspect-21/9 rounded-2xl overflow-hidden border bg-muted flex items-center justify-center shadow-xl">
           {selectedPreview ? (
             <img
-              src={`${imageBaseUrl}/${selectedPreview}`}
+              src={`${DESIGN_IMAGE_URL}/${selectedPreview}`}
               alt="Preview"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
@@ -88,7 +88,7 @@ export default function DesignDetailsPage() {
                 }`}
               >
                 <div className="w-full h-full overflow-hidden rounded-lg">
-                  <img src={`${imageBaseUrl}/${image}`} alt="Thumb" className="w-full h-full object-cover" />
+                  <img src={`${DESIGN_IMAGE_URL}/${image}`} alt="Thumb" className="w-full h-full object-cover" />
                 </div>
               </div>
             ))}

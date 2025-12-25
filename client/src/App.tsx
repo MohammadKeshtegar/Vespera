@@ -2,12 +2,14 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import { ToastContainer } from "react-toastify";
 
 // Auth
+import ForgetPasswordPage from "./pages/ForgetPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 import { requireAuth } from "@/utils/authCheck";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
 
 // Admin
-import ManageUsers from "./features/admin/ManageUsers";
+import ManageUsersTable from "./features/admin/ManageUsersTable";
 
 // Design
 import DesignDetailsPage from "./features/design/DesignDetailsPage";
@@ -31,8 +33,10 @@ const router = createBrowserRouter([
     element: <PublicAppLayout />,
     children: [
       { path: "/", element: <EntryPage /> },
-      { path: "/login", element: <Login /> },
-      { path: "/sign-up", element: <Signup /> },
+      { path: "/login", element: <LoginPage /> },
+      { path: "/sign-up", element: <SignupPage /> },
+      { path: "/forget-password", element: <ForgetPasswordPage /> },
+      { path: "/reset-password/:token", element: <ResetPasswordPage /> },
     ],
   },
   {
@@ -46,11 +50,11 @@ const router = createBrowserRouter([
         path: "/designs",
         children: [
           { path: ":usernameSlug", element: <UserDesigns /> },
-          { path: "/", element: <DesignMainPage /> },
+          { path: "", element: <DesignMainPage /> },
         ],
       },
       { path: "/create-design", element: <CreateDesignForm /> },
-      { path: "/manage-users", element: <ManageUsers /> },
+      { path: "/manage-users", element: <ManageUsersTable /> },
     ],
   },
   { path: "*", element: <PageNotFound /> },

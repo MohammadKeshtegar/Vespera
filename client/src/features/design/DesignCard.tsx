@@ -1,6 +1,7 @@
 import { Heart, ImageIcon, Star } from "lucide-react";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { DESIGN_IMAGE_URL } from "@/constant/constants";
 import { Badge } from "@/components/ui/badge";
 import type { Design } from "@/types/design";
 import ButtonLink from "@/ui/ButtonLink";
@@ -15,7 +16,7 @@ export default function DesignCard({ design }: DesignCardProps) {
       <div className="relative h-48 w-full overflow-hidden bg-muted">
         {design.images.length > 0 ? (
           <img
-            src={`http://localhost:5000/public/img/designs/${design.images[0]}`}
+            src={`${DESIGN_IMAGE_URL}/${design.images[0]}`}
             alt={design.name}
             className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
           />

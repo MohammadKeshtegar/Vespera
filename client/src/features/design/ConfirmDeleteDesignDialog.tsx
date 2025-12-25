@@ -22,14 +22,6 @@ export default function ConfirmDeleteDesignDialog({ designID, showConfirmDeleteD
 
   return (
     <AlertDialog open={showConfirmDeleteDesign} onOpenChange={setShowConfirmDeleteDesign}>
-      {/* <AlertDialogTrigger>
-                  <MenuItem onSelect={(e) => e.preventDefault()}>
-                    <Trash className="size-4" />
-                    Delete
-                  </MenuItem>
-                </AlertDialogTrigger> */}
-
-      {/* <ConfirmDeleteDesignDialog designID={row.original._id} /> */}
       <AlertDialogPopup>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure about deleting this design?</AlertDialogTitle>

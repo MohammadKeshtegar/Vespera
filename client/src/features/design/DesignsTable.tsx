@@ -1,5 +1,3 @@
-"use client";
-
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { ChevronDownIcon, Columns3Icon, EllipsisVertical, Eye, RefreshCcwIcon, SearchIcon, Trash } from "lucide-react";
 import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table";
@@ -18,26 +16,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Menu, MenuGroup, MenuItem, MenuPopup, MenuTrigger } from "@/components/ui/menu";
-import { AlertDialog, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import ConfirmDeleteDesignDialog from "./ConfirmDeleteDesignDialog";
 import type { Design, DesignList } from "@/types/design";
+import { DESIGN_IMAGE_URL } from "@/constant/constants";
 import { Input } from "@/components/ui/input";
 
-import {
-  AlertDialogClose,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogPopup,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import useDeleteDesign from "./hooks/useDeleteDesign";
-import { Spinner } from "@/components/ui/spinner";
-import { toastManager } from "@/components/ui/toast";
-import { toast } from "react-toastify";
-// import { Button } from "@/components/ui/button";
-
-export const columns: ColumnDef<Design>[] = [
+const columns: ColumnDef<Design>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -59,7 +43,7 @@ export const columns: ColumnDef<Design>[] = [
 
       return (
         <div className="capitalize w-10">
-          <img src={`http://localhost:5000/public/img/designs/${images[0]}`} alt={images[0]} />
+          <img src={`${DESIGN_IMAGE_URL}/${images[0]}`} alt={images[0]} />
         </div>
       );
     },
@@ -124,7 +108,7 @@ export const columns: ColumnDef<Design>[] = [
                 </Link>
               </MenuItem>
 
-              <MenuItem onClick={() => setShowConfirmDeleteDesign(true)}>
+              <MenuItem onClick={() => setShowConfirmDeleteDesign(true)} className="text-red-400">
                 <Trash className="size-4" />
                 Delete
               </MenuItem>
